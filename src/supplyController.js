@@ -22,9 +22,19 @@ function create(supplies, supplyType) {
     }
 }
 
+function show(supplies, supplyID) {
+    const supply = supplies.find((supply) => supply.id === supplyID);
+    if(supply === undefined){
+        return "Sorry, a pet supply with that ID was not found"
+    } else {
+        return `${supply.name}'s price is: $${(((supply.priceInCents)/100).toFixed(2))} and it's ID is ${supply.id}`
+    }
+  }
+
 
 
 module.exports = {
     index,
-    create
+    create,
+    show
 }

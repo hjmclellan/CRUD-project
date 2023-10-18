@@ -2,7 +2,8 @@ const { readJSONFile, writeJSONFile } = require("./src/helpers");
 
 const {
     index,
-    create
+    create,
+    show
 } = require("./src/supplyController")
 
 const inform = console.log;
@@ -23,7 +24,11 @@ function run(){
         case "create":
             updatedSupplies = create(supplies, supply);
             writeToFile = true;
-        break;
+            break;
+        case "show":
+            const supplyView = show(supplies, supply);
+            inform(supplyView);
+            break;
     }
     if (writeToFile) {
         writeJSONFile("./data", "petSupplies.json", updatedSupplies);
